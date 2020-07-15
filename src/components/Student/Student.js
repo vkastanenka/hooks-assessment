@@ -92,6 +92,7 @@ const Student = (props) => {
                   required
                   type="text"
                   value={tagInput}
+                  id="add-tag-input"
                   placeholder="Add a tag"
                   onChange={(e) => setTagInput(e.target.value)}
                   className="input student__tag-input"
