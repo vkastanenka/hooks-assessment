@@ -1,0 +1,24 @@
+.icon {
+  transition: all 0.3s;
+
+  &--large {
+    height: 5rem;
+    width: 5rem;
+  }
+
+  &--grey-primary {
+    fill: $color-grey-light-3;
+
+    &:hover {
+      fill: $color-primary;
+    }
+  }
+
+  &--translate:hover {
+    transform: translateY(-2px);
+  }
+
+  &--active {
+    cursor: pointer;
+  }
+}

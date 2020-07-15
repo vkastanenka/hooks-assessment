@@ -1,12 +1,16 @@
 .student {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  position: relative;
 
   &__pfp-container {
     width: 12rem;
     height: 12rem;
     border-radius: 50%;
     border: 1px solid $color-grey-light-3;
+    display: inline-block;
+    margin-top: 5rem;
+    margin-right: 2rem;
   }
 
   &__pfp {
@@ -15,11 +19,19 @@
     border-radius: 50%;
   }
 
-  & > :first-child {
-    margin-right: 2rem;
-  }
-
   &__info-list {
     margin-left: 3rem;
   }
+
+  &__grade-list-item {
+    & > :first-child {
+      margin-right: 2rem;
+    }
+  }
+}
+
+.expand-btn {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
 }

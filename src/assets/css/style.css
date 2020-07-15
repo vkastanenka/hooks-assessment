@@ -27,6 +27,12 @@ a {
   color: inherit;
   text-decoration: none; }
 
+button {
+  border: none;
+  background-color: transparent; }
+  button:focus {
+    outline: none; }
+
 body {
   line-height: 1.6;
   font-weight: 300;
@@ -36,29 +42,56 @@ body {
 .heading-tertiary {
   font-size: 5rem; }
 
+.mg-tp--md {
+  margin-top: 2rem; }
+
+.icon {
+  transition: all 0.3s; }
+  .icon--large {
+    height: 5rem;
+    width: 5rem; }
+  .icon--grey-primary {
+    fill: #bbb; }
+    .icon--grey-primary:hover {
+      fill: #2998ff; }
+  .icon--translate:hover {
+    transform: translateY(-2px); }
+  .icon--active {
+    cursor: pointer; }
+
 .input {
   padding: 2rem;
-  font-size: 1.8rem; }
+  font-size: 1.8rem;
+  opacity: 1; }
   .input::placeholder {
     font-size: 1.8rem;
     color: #bbb; }
 
 .student {
   display: flex;
-  align-items: center; }
+  align-items: flex-start;
+  position: relative; }
   .student__pfp-container {
     width: 12rem;
     height: 12rem;
     border-radius: 50%;
-    border: 1px solid #bbb; }
+    border: 1px solid #bbb;
+    display: inline-block;
+    margin-top: 5rem;
+    margin-right: 2rem; }
   .student__pfp {
     height: 100%;
     width: 100%;
     border-radius: 50%; }
-  .student > :first-child {
-    margin-right: 2rem; }
   .student__info-list {
     margin-left: 3rem; }
+  .student__grade-list-item > :first-child {
+    margin-right: 2rem; }
+
+.expand-btn {
+  position: absolute;
+  top: 2rem;
+  right: 2rem; }
 
 .student-container {
   width: 70vw;
@@ -77,10 +110,12 @@ body {
     position: sticky;
     top: 0;
     background-color: #f7f7f7;
-    border-bottom: 3px solid #bbb; }
+    border-bottom: 3px solid #bbb;
+    z-index: 5; }
   .student-container .student {
     padding: 2rem;
-    border-bottom: 1px solid #bbb; }
+    border-bottom: 1px solid #bbb;
+    z-index: 4; }
 
 .App {
   height: 100vh;

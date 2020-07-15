@@ -27,3 +27,12 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+button {
+  border: none;
+  background-color: transparent;
+
+  &:focus {
+    outline: none;
+  }
+}

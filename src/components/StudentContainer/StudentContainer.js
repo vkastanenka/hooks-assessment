@@ -47,6 +47,7 @@ const StudentContainer = () => {
           company={student.company}
           skill={student.skill}
           average={student.average}
+          grades={student.grades}
         />
       ));
 
