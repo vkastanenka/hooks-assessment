@@ -1,0 +1,25 @@
+.student {
+  display: flex;
+  align-items: center;
+
+  &__pfp-container {
+    width: 12rem;
+    height: 12rem;
+    border-radius: 50%;
+    border: 1px solid $color-grey-light-3;
+  }
+
+  &__pfp {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+  }
+
+  & > :first-child {
+    margin-right: 2rem;
+  }
+
+  &__info-list {
+    margin-left: 3rem;
+  }
+}

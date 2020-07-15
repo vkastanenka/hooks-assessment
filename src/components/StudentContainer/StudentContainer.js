@@ -1,5 +1,5 @@
 // React
-import React from "react";
+import React, { useState } from "react";
 
 // Components
 import Student from "../Student/Student";
@@ -10,6 +10,8 @@ import useFetch from "../../utils/CustomHooks/useFetchData";
 
 const StudentContainer = () => {
   let content;
+
+  // Fetch students
   const res = useFetch("https://www.hatchways.io/api/assessment/students");
 
   // If loading, notify user
@@ -43,7 +45,12 @@ const StudentContainer = () => {
     content = <div>Problem fetching data, please try again later!</div>;
   }
 
-  return <div className="students">{content}</div>;
+  return (
+    <div className="student-container">
+      <input className="student-container__filter" type="text" />
+      {content}
+    </div>
+  );
 };
 
 export default StudentContainer;

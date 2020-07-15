@@ -13,13 +13,15 @@ const Student = (props) => {
           className="student__pfp"
         />
       </div>
-      <h3 className="heading-tertiary">{props.fullName}</h3>
-      <ul className="student__info">
-        <li className="student__info-item">Email: {props.email}</li>
-        <li className="student__info-item">Company: {props.company}</li>
-        <li className="student__info-item">Skill: {props.skill}</li>
-        <li className="student__info-item">Average: {props.average}</li>
-      </ul>
+      <div className="student__info">
+        <h3 className="heading-tertiary">{props.fullName}</h3>
+        <ul className="student__info-list">
+          <li className="student__info-list-item">Email: {props.email}</li>
+          <li className="student__info-list-item">Company: {props.company}</li>
+          <li className="student__info-list-item">Skill: {props.skill}</li>
+          <li className="student__info-list-item">Average: {props.average}</li>
+        </ul>
+      </div>
     </div>
   );
 };
@@ -33,4 +35,4 @@ Student.propTypes = {
   company: PropTypes.string.isRequired,
   skill: PropTypes.string.isRequired,
   average: PropTypes.string.isRequired,
-}
+};

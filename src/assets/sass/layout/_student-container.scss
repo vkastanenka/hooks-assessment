@@ -1,0 +1,21 @@
+.student-container {
+  width: 70vw;
+  height: 80vh;
+  background-color: $color-grey-light-1;
+  border-radius: $border-radius-default;
+  box-shadow: $box-shadow-light;
+
+  overflow: hidden;
+
+  &:hover {
+    overflow: auto;
+  }
+
+  & > * {
+    padding: 2rem;
+  }
+
+  & > :not(:last-child) {
+    border-bottom: 1px solid $color-grey-light-3;
+  }
+}
