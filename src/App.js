@@ -6,6 +6,7 @@ import { StateProvider } from "./store/store";
 import StudentContainer from "./components/StudentContainer/StudentContainer";
 
 function App() {
+
   return (
     <StateProvider>
       <div className="App">

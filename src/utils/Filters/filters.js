@@ -1,12 +1,8 @@
 // Filters array of objects based on string value of supplied object key
 export const objStringFilter = (objArr, objKey, filter) => {
   const lowerFilter = filter.toLowerCase();
-  const lowerObjArr = objArr.map((val) => ({
-    ...val,
-    [objKey]: val[objKey].toLowerCase(),
-  }));
-  const filteredObjArr = lowerObjArr.filter((val) =>
-    val[objKey].includes(lowerFilter)
+  const filteredObjArr = objArr.filter((val) =>
+    val[objKey].toLowerCase().includes(lowerFilter)
   );
   return filteredObjArr;
 };

@@ -2,13 +2,14 @@
 import React, { createContext, useReducer } from "react";
 
 // Utilities
-import { calcAve } from "../utils/Math/calc";
+import { setFetch, addTag, deleteTag } from '../utils/ReducerUtils/reducerUtils';
 
 // Create the initial state
 const initialState = {
   students: null,
   error: null,
   loading: false,
+  warning: "",
 };
 
 // Create the context
@@ -29,22 +30,14 @@ const reducer = (state, action) => {
         loading: false,
       };
 
-    case "SET_FETCH":
-      const payloadCopy = { ...action.payload };
-      const studentArr = payloadCopy.data.students;
-
-      // Add average, fullName, and tag fields to student object
-      studentArr.forEach((student) => {
-        student.average = calcAve(student.grades);
-        student.fullName = `${student.firstName} ${student.lastName}`;
-        student.tags = [];
-        student.tagsLower = [];
-      });
-
+    case "CLEAR_WARNING":
       return {
         ...state,
-        students: studentArr,
+        warning: "",
       };
+
+    case "SET_FETCH":
+      return setFetch(state, action.payload);
 
     case "SET_FETCH_FAIL":
       return {
@@ -53,18 +46,15 @@ const reducer = (state, action) => {
       };
 
     case "ADD_TAG":
-      // Add the tag to the students array
-      const studentsCopy = [...state.students];
-      studentsCopy.forEach((student) => {
-        if (student.id === action.id) {
-          student.tags.push(action.payload);
-          student.tagsLower.push(action.payload.toLowerCase());
-        }
-      });
+      return addTag(state, action.id, action.payload);
 
+    case "DELETE_TAG":
+      return deleteTag(state, action.id, action.tagIndex);
+
+    case "TAG_EXISTS":
       return {
         ...state,
-        studentsCopy,
+        warning: "User already has submitted this tag!",
       };
 
     default:

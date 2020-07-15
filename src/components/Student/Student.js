@@ -12,7 +12,32 @@ const Student = (props) => {
   const { dispatch } = globalState;
 
   const [tagInput, setTagInput] = useState("");
-  const [showGrades, setShowGrades] = useState(false);
+  const [showMore, setShowMore] = useState(false);
+
+  const addTag = (e) => {
+    e.preventDefault();
+
+    // If user has already added the tag, warn them
+    if (props.tagsLower.includes(tagInput.toLowerCase())) {
+      dispatch({ type: "TAG_EXISTS" });
+    } else {
+      // Clear warning message if exists
+      dispatch({
+        type: "ADD_TAG",
+        id: props.id,
+        payload: tagInput,
+      });
+      setTagInput("");
+    }
+  };
+
+  const deleteTag = (i) => {
+    dispatch({
+      type: "DELETE_TAG",
+      id: props.id,
+      tagIndex: i,
+    });
+  };
 
   return (
     <div className="student">
@@ -38,7 +63,7 @@ const Student = (props) => {
               Average: {props.average}
             </li>
           </ul>
-          {showGrades ? (
+          {showMore ? (
             <>
               <ul className="student__info-list mg-tp--md">
                 {props.grades.map((grade, i) => (
@@ -51,25 +76,20 @@ const Student = (props) => {
               <div className="student__tags mg-tp--md">
                 {props.tags.length > 0
                   ? props.tags.map((tag, i) => (
-                      <div key={i} className="student__tag">
-                        {tag}
+                      <div key={i} className="tag">
+                        <Icon
+                          type="cross"
+                          onClick={() => deleteTag(i)}
+                          className="icon icon--small icon--black-primary icon--translate icon--active tag__close"
+                        />
+                        <span>{tag}</span>
                       </div>
                     ))
                   : null}
               </div>
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  dispatch({
-                    type: "ADD_TAG",
-                    id: props.id,
-                    payload: tagInput,
-                  });
-                  setTagInput("");
-                }}
-                className="mg-tp--md"
-              >
+              <form onSubmit={(e) => addTag(e)} className="mg-tp--md">
                 <input
+                  required
                   type="text"
                   value={tagInput}
                   placeholder="Add a tag"
@@ -83,8 +103,8 @@ const Student = (props) => {
       </div>
       <button className="expand-btn">
         <Icon
-          type={!showGrades ? "plus" : "minus"}
-          onClick={() => setShowGrades((prevShowGrades) => !prevShowGrades)}
+          type={!showMore ? "plus" : "minus"}
+          onClick={() => setShowMore((prevShowMore) => !prevShowMore)}
           className="icon icon--large icon--grey-primary icon--translate icon--active"
         />
       </button>
@@ -104,4 +124,5 @@ Student.propTypes = {
   average: PropTypes.string.isRequired,
   grades: PropTypes.array.isRequired,
   tags: PropTypes.array.isRequired,
+  tagsLower: PropTypes.array.isRequired,
 };

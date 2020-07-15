@@ -6,6 +6,19 @@
     width: 5rem;
   }
 
+  &--small {
+    height: 2rem;
+    width: 2rem;
+  }
+
+  &--black-primary {
+    fill: $color-black;
+
+    &:hover {
+      fill: $color-primary;
+    }
+  }
+
   &--grey-primary {
     fill: $color-grey-light-3;
 

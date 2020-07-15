@@ -1,0 +1,14 @@
+.tag {
+  padding: 1.5rem 3rem;
+  display: inline-block;
+  background-color: $color-grey-light-3;
+  border-radius: $border-radius-default;
+  margin: 0.5rem;
+  position: relative;
+
+  &__close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+}

@@ -3,10 +3,12 @@ import React, { useState, useContext } from "react";
 import { StoreContext } from "../../store/store";
 
 // Components
+import Alert from '../Alert/Alert';
+import Spinner from "../Spinner/Spinner";
 import Student from "../Student/Student";
 
 // Utilities
-import { objStringFilter, objArrFilter } from '../../utils/Filters/filters';
+import { objStringFilter, objArrFilter } from "../../utils/Filters/filters";
 import useFetch from "../../utils/CustomHooks/useFetchData";
 
 const StudentContainer = () => {
@@ -23,35 +25,47 @@ const StudentContainer = () => {
 
   // If loading, notify user
   if (state.loading) {
-    content = <div>Loading...</div>;
+    content = (
+      <div className="student-container__center">
+        <Spinner />
+      </div>
+    );
 
     // If no loading and successful response, display students
   } else if (!state.loading && state.students) {
     // Copy student array and filter
     studentArr = [...state.students];
-    if (nameFilter) studentArr = objStringFilter(studentArr, 'fullName', nameFilter);
-    if (tagFilter) studentArr = objArrFilter(studentArr, 'tagsLower', tagFilter);
+    if (nameFilter)
+      studentArr = objStringFilter(studentArr, "fullName", nameFilter);
+    if (tagFilter)
+      studentArr = objArrFilter(studentArr, "tagsLower", tagFilter);
 
     // Render student component for filtered array
-    content = studentArr
-      .map((student) => (
-        <Student
-          key={student.id}
-          id={student.id}
-          pic={student.pic}
-          fullName={student.fullName}
-          email={student.email}
-          company={student.company}
-          skill={student.skill}
-          average={student.average}
-          grades={student.grades}
-          tags={student.tags}
-        />
-      ));
+    content = studentArr.map((student) => (
+      <Student
+        key={student.id}
+        id={student.id}
+        pic={student.pic}
+        fullName={student.fullName}
+        email={student.email}
+        company={student.company}
+        skill={student.skill}
+        average={student.average}
+        grades={student.grades}
+        tags={student.tags}
+        tagsLower={student.tagsLower}
+      />
+    ));
 
     // If no loading and error, display error message
   } else if (!state.loading && state.error) {
-    content = <div>Problem fetching data, please try again later!</div>;
+    content = (
+      <div className="student-container__center ta-center">
+        <h3 className="heading-tertiary">
+          Problem fetching data, please try again later!
+        </h3>
+      </div>
+    );
   }
 
   return (
@@ -73,6 +87,7 @@ const StudentContainer = () => {
         onChange={(e) => setTagFilter(e.target.value)}
       />
       {content}
+      {state.warning ? <Alert type="error">{state.warning}</Alert> : null}
     </div>
   );
 };

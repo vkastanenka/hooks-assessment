@@ -45,14 +45,6 @@
   &__tags {
     min-height: 3rem;
   }
-
-  &__tag {
-    padding: 1.5rem;
-    display: inline-block;
-    background-color: $color-grey-light-3;
-    border-radius: $border-radius-default;
-    margin: 0.5rem;
-  }
 }
 
 .expand-btn {
