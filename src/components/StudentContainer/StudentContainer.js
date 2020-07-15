@@ -3,7 +3,7 @@ import React, { useState, useContext } from "react";
 import { StoreContext } from "../../store/store";
 
 // Components
-import Alert from '../Alert/Alert';
+import Alert from "../Alert/Alert";
 import Spinner from "../Spinner/Spinner";
 import Student from "../Student/Student";
 
@@ -81,7 +81,7 @@ const StudentContainer = () => {
       <input
         type="text"
         value={tagFilter}
-        id="name-input"
+        id="tag-input"
         placeholder="Search by tags"
         className="input student-container__filter student-container__filter--tags"
         onChange={(e) => setTagFilter(e.target.value)}

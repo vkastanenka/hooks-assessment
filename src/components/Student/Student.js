@@ -112,7 +112,7 @@ const Student = (props) => {
   );
 };
 
-export default Student;
+export default React.memo(Student);
 
 Student.propTypes = {
   id: PropTypes.string.isRequired,
