@@ -60,9 +60,10 @@ body {
     cursor: pointer; }
 
 .input {
-  padding: 2rem;
+  padding: 2rem 0rem;
   font-size: 1.8rem;
-  opacity: 1; }
+  opacity: 1;
+  background-color: #f7f7f7; }
   .input::placeholder {
     font-size: 1.8rem;
     color: #bbb; }
@@ -83,10 +84,25 @@ body {
     height: 100%;
     width: 100%;
     border-radius: 50%; }
-  .student__info-list {
-    margin-left: 3rem; }
+  .student__image {
+    flex-basis: 20%; }
+  .student__info {
+    flex-basis: 80%; }
+  .student__info-content {
+    margin-left: 3rem;
+    max-width: 80%; }
   .student__grade-list-item > :first-child {
     margin-right: 2rem; }
+  .student__tag-input {
+    border-bottom: 2px solid #bbb; }
+  .student__tags {
+    min-height: 3rem; }
+  .student__tag {
+    padding: 1.5rem;
+    display: inline-block;
+    background-color: #bbb;
+    border-radius: 10px;
+    margin: 0.5rem; }
 
 .expand-btn {
   position: absolute;
@@ -108,10 +124,12 @@ body {
     display: block;
     margin: 0 auto;
     position: sticky;
-    top: 0;
-    background-color: #f7f7f7;
-    border-bottom: 3px solid #bbb;
+    border-bottom: 0.3rem solid #bbb;
     z-index: 5; }
+    .student-container__filter--name {
+      top: 0; }
+    .student-container__filter--tags {
+      top: 6.4rem; }
   .student-container .student {
     padding: 2rem;
     border-bottom: 1px solid #bbb;

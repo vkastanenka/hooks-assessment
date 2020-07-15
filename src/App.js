@@ -2,13 +2,16 @@
 import React from "react";
 
 // Components
+import { StateProvider } from "./store/store";
 import StudentContainer from "./components/StudentContainer/StudentContainer";
 
 function App() {
   return (
-    <div className="App">
-      <StudentContainer />
-    </div>
+    <StateProvider>
+      <div className="App">
+        <StudentContainer />
+      </div>
+    </StateProvider>
   );
 }
 

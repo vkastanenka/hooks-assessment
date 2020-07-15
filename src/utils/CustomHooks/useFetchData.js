@@ -1,29 +1,27 @@
-import { useState, useEffect } from "react";
+import { useEffect, useContext } from "react";
 import axios from "axios";
+import { StoreContext } from "../../store/store";
 
-// Custom hook to fetch data, handle loading, and handle errors
+// Custom hook to fetch data, handle loading, and handle errors in global state
 const useFetch = (url) => {
-  const [res, setRes] = useState(null);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const globalState = useContext(StoreContext);
+  const { dispatch } = globalState;
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true);
+      dispatch({ type: "SET_LOAD" });
       try {
         const res = await axios.get(url);
-        setRes(res);
-        setLoading(false)
+        dispatch({ type: "SET_FETCH", payload: res });
+        dispatch({ type: "UNSET_LOAD" });
       } catch (err) {
-        setError(err);
-        setLoading(false)
+        dispatch({ type: "SET_FETCH_FAIL", payload: err });
+        dispatch({ type: "UNSET_LOAD" });
       }
     };
 
     fetchData();
-  }, [url]);
-
-  return { res, error, loading };
+  }, [url, dispatch]);
 };
 
 export default useFetch;

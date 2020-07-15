@@ -17,10 +17,16 @@
     display: block;
     margin: 0 auto;
     position: sticky;
-    top: 0;
-    background-color: $color-grey-light-1;
-    border-bottom: 3px solid $color-grey-light-3;
+    border-bottom: 0.3rem solid $color-grey-light-3;
     z-index: 5;
+
+    &--name {
+      top: 0;
+    }
+
+    &--tags {
+      top: 6.4rem;
+    }
   }
 
   & .student {
