@@ -1,0 +1,9 @@
+.input {
+  padding: 2rem;
+  font-size: 1.8rem;
+
+  &::placeholder {
+    font-size: 1.8rem;
+    color: $color-grey-light-3;
+  }
+}

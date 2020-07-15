@@ -15,6 +15,11 @@ html {
   font-size: 62.5%;
   box-sizing: border-box; }
 
+input {
+  border: none; }
+  input:focus {
+    outline: none; }
+
 li {
   list-style: none; }
 
@@ -30,6 +35,13 @@ body {
 
 .heading-tertiary {
   font-size: 5rem; }
+
+.input {
+  padding: 2rem;
+  font-size: 1.8rem; }
+  .input::placeholder {
+    font-size: 1.8rem;
+    color: #bbb; }
 
 .student {
   display: flex;
@@ -54,12 +66,20 @@ body {
   background-color: #f7f7f7;
   border-radius: 10px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1), -2px -2px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
   overflow: hidden; }
   .student-container:hover {
     overflow: auto; }
-  .student-container > * {
-    padding: 2rem; }
-  .student-container > :not(:last-child) {
+  .student-container__filter {
+    width: 98%;
+    display: block;
+    margin: 0 auto;
+    position: sticky;
+    top: 0;
+    background-color: #f7f7f7;
+    border-bottom: 3px solid #bbb; }
+  .student-container .student {
+    padding: 2rem;
     border-bottom: 1px solid #bbb; }
 
 .App {

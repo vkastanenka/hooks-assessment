@@ -11,6 +11,14 @@ html {
   box-sizing: border-box;
 }
 
+input {
+  border: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
 li {
   list-style: none;
 }

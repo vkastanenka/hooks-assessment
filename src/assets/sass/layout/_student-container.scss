@@ -4,6 +4,7 @@
   background-color: $color-grey-light-1;
   border-radius: $border-radius-default;
   box-shadow: $box-shadow-light;
+  position: relative;
 
   overflow: hidden;
 
@@ -11,11 +12,18 @@
     overflow: auto;
   }
 
-  & > * {
-    padding: 2rem;
+  &__filter {
+    width: 98%;
+    display: block;
+    margin: 0 auto;
+    position: sticky;
+    top: 0;
+    background-color: $color-grey-light-1;
+    border-bottom: 3px solid $color-grey-light-3;
   }
 
-  & > :not(:last-child) {
+  & .student {
+    padding: 2rem;
     border-bottom: 1px solid $color-grey-light-3;
   }
 }

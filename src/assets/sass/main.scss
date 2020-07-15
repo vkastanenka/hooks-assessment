@@ -1,8 +1,13 @@
 @import "abstracts/extends";
 @import "abstracts/mixins";
 @import "abstracts/variables";
+
 @import "base/base";
 @import "base/typography";
+
+@import "components/input";
 @import "components/student";
+
 @import "layout/student-container";
+
 @import "pages/home";
